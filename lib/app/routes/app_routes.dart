@@ -4,9 +4,19 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
+  static const BOTTOM_BAR = _Paths.BOTTOM_BAR;
+  static const CATEGORIES = _Paths.CATEGORIES;
+  static const CART = _Paths.CART;
+  static const WISHLIST = _Paths.WISHLIST;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
+  static const BOTTOM_BAR = '/bottom-bar';
+  static const CATEGORIES = '/categories';
+  static const CART = '/cart';
+  static const WISHLIST = '/wishlist';
+  static const PROFILE = '/profile';
 }
