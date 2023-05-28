@@ -1,23 +1,30 @@
+import 'package:firebase_project/app/data/models/user_model.dart';
+import 'package:firebase_project/app/data/services/firebase_service/auth_service.dart';
+import 'package:firebase_project/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  late UserModel userModel;
+  final firebaseAuthservice = FirebaseAuthService();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    //Get the current signed in user
+    var user = firebaseAuthservice.getCurrentUser();
+
+    //assign the user to userModel variable
+    userModel = UserModel(
+        uId: user?.uid ?? '',
+        name: user?.displayName ?? '',
+        email: user?.email ?? '');
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+//Logout from the device
+  logoutUser() async {
+    await firebaseAuthservice.logOut();
 
-  @override
-  void onClose() {
-    super.onClose();
+    //navigate to login page
+    Get.offAllNamed(Routes.LOGIN);
   }
-
-  void increment() => count.value++;
 }
